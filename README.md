@@ -1,4 +1,4 @@
-# 🌍 Carbon Footprint Tracker
+# 🌍 CarboFoot Track
 
 A Flutter app created to track your carbon footprint, raising awareness and encouraging eco-friendly choices. Developed during a hackathon, this app provides users with personalized insights into their environmental impact.
 
@@ -16,12 +16,7 @@ A Flutter app created to track your carbon footprint, raising awareness and enco
 2. **Home Screen Overview**
    - Clean, intuitive layout with categories represented by custom icons.
    - Tap on each category to enter details and calculate emissions.
-
-   ### Categories with Custom Icons:
-   - **Commute**: ![Commute Image](assets/images/finalcar.png)
-   - **Household**: ![Household Image](assets/images/finaltv.png)
-   - **Food**: ![Food Image](assets/images/Cooking-pana.png)
-   - **Waste**: ![Waste Image](assets/images/recycle_bin.png)
+   - ![Home Screen](assets/images/readme/home.jpg)
 
 3. **Interactive Result Screen**
    - Presents a summary of your footprint with detailed insights.
@@ -29,12 +24,19 @@ A Flutter app created to track your carbon footprint, raising awareness and enco
    - **Comparison Section**: Compare your footprint with regional averages.
    - **Reduce Emissions Card**: Personalized suggestions to lower your emissions.
    - **Social Sharing**: Share your results to inspire eco-friendly actions.
+   - ![Results Screen](assets/images/readme/result.jpg.jpg)
 
 4. **Social Sharing**
    - Encourages users to share their results on social platforms, inspiring others to reduce emissions.
 
 ---
-
+## App Preview
+- **Home**:![Home Screen](assets/images/readme/Home.jpg)
+- **Questions**:![Questions Screen](assets/images/readme/ques_screen.jpg)
+- **Reduce Screen**:![Reduce carbon emission instructions Screen](assets/images/readme/reduce.jpg)
+- **Result Screen**:![Results Screen](assets/images/readme/result.jpg)
+- **Result Screen**:![Results Screen](assets/images/readme/result1.jpg)
+---
 ## 🖼️ Screens and Features
 
 ### Home Screen
@@ -65,3 +67,20 @@ A Flutter app created to track your carbon footprint, raising awareness and enco
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/carbon-footprint-tracker.git
+2. Get all dependencies:
+    ```bash
+    flutter pub get
+3. Run the app:
+    ```bash
+    flutter run
+
+### Project Structure
+  - /screens: Contains UI components for the calculator, result screen, and emission-reduction tips.
+  - /helpers: Includes color themes and text styles and calculation data.
+
+### Technologies Used
+  - **Flutter** for cross-platform development
+  - **Share Plus** for social sharing integration
+  - **flutter_xlider** for interactive user inputs on sliders
+
+### Thanks❤️❤️
