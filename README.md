@@ -16,7 +16,7 @@ A Flutter app created to track your carbon footprint, raising awareness and enco
 2. **Home Screen Overview**
    - Clean, intuitive layout with categories represented by custom icons.
    - Tap on each category to enter details and calculate emissions.
-   - ![Home Screen](assets/images/readme/home.jpg)
+   - ![Home Screen](assets/images/readme/home.jpg = 200x400)
 
 3. **Interactive Result Screen**
    - Presents a summary of your footprint with detailed insights.
@@ -24,7 +24,7 @@ A Flutter app created to track your carbon footprint, raising awareness and enco
    - **Comparison Section**: Compare your footprint with regional averages.
    - **Reduce Emissions Card**: Personalized suggestions to lower your emissions.
    - **Social Sharing**: Share your results to inspire eco-friendly actions.
-   - ![Results Screen](assets/images/readme/result.jpg.jpg)
+   - ![Results Screen](assets/images/readme/result.jpg)
 
 4. **Social Sharing**
    - Encourages users to share their results on social platforms, inspiring others to reduce emissions.
