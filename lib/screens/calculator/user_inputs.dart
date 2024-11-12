@@ -25,6 +25,7 @@ class _UserInputsState extends State<UserInputs> {
     final foodQ = Provider.of<Questions>(context).foodQuestions;
     final travelQ = Provider.of<Questions>(context).travelQuestions;
     final waterQ = Provider.of<Questions>(context).waterQuestions;
+    final wasteQ = Provider.of<Questions>(context).wasteQuestions;
 
     // Initialize questions list based on `args`
     List<String> questions = [];
@@ -32,6 +33,8 @@ class _UserInputsState extends State<UserInputs> {
       questions = foodQ;
     } else if (args == 'travel') {
       questions = travelQ;
+    } else if (args == 'waste') {
+      questions = wasteQ;
     } else {
       questions = waterQ;
     }
@@ -65,22 +68,27 @@ class _UserInputsState extends State<UserInputs> {
             averageEmission = CarbonFootPrint.avgEmissionDueToHouseHoldPerDay;
             activityName = "Household";
             break;
+            case 'waste':
+            footprint = CarbonFootPrint.getDailyWasteCarbonFootPrint(
+                answers[0], answers[1], answers[2]);
+            averageEmission = CarbonFootPrint.avgEmissionDueToWastePerDay;
+            activityName = "Waste";
+            break;
           default:
             return;
         }
 
         Navigator.pushReplacement(
-  context,
-  MaterialPageRoute(
-    builder: (context) => ResultScreen(
-      key: Key('result_screen_key'), // Pass a key here
-      userEmission: footprint,
-      averageEmission: averageEmission,
-      activityName: activityName,
-    ),
-  ),
-);
-
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultScreen(
+              key: Key('result_screen_key'),
+              userEmission: footprint,
+              averageEmission: averageEmission,
+              activityName: activityName,
+            ),
+          ),
+        );
       } else {
         setState(() {
           index++;
@@ -90,7 +98,8 @@ class _UserInputsState extends State<UserInputs> {
     }
 
     Widget buildFlareAnimation(String path, String animation,
-        {BoxFit fit = BoxFit.cover, Alignment alignment = Alignment.bottomCenter}) {
+        {BoxFit fit = BoxFit.cover,
+        Alignment alignment = Alignment.bottomCenter}) {
       return FlareActor(
         path,
         animation: animation,
@@ -110,7 +119,8 @@ class _UserInputsState extends State<UserInputs> {
               if (args == 'food') ...[
                 buildFlareAnimation('assets/flare/base_two_flow.flr', 'flow'),
                 if (index == 0 || index == 1)
-                  buildFlareAnimation('assets/flare/food_1.flr', 'flow', fit: BoxFit.fitWidth),
+                  buildFlareAnimation('assets/flare/food_1.flr', 'flow',
+                      fit: BoxFit.fitWidth),
                 if (index == 2 || index == 3)
                   Positioned(
                     bottom: 30,
@@ -125,7 +135,8 @@ class _UserInputsState extends State<UserInputs> {
                   Positioned(
                     bottom: 0,
                     right: 0,
-                    child: Image.asset('assets/images/car.png', height: MediaQuery.of(context).size.height * 0.3),
+                    child: Image.asset('assets/images/car.png',
+                        height: MediaQuery.of(context).size.height * 0.3),
                   ),
               ],
               if (args == 'water') ...[
@@ -133,7 +144,19 @@ class _UserInputsState extends State<UserInputs> {
                 if (index == 0 || index == 1 || index == 2)
                   buildFlareAnimation('assets/flare/watch_tv.flr', 'flow'),
                 if (index == 3)
-                  buildFlareAnimation('assets/flare/water_flow.flr', 'flow', alignment: Alignment.bottomRight, fit: BoxFit.fitWidth),
+                  buildFlareAnimation('assets/flare/water_flow.flr', 'flow',
+                      alignment: Alignment.bottomRight, fit: BoxFit.fitWidth),
+              ],
+              if (args == 'waste') ...[
+                buildFlareAnimation('assets/flare/base_two_flow.flr', 'flow'),
+                if (index == 0 || index == 1)
+                  buildFlareAnimation('assets/flare/food_1.flr', 'flow',
+                      fit: BoxFit.fitWidth),
+                if (index == 2 || index == 3)
+                  Positioned(
+                    bottom: 30,
+                    child: Image.asset('assets/images/eat_1.png'),
+                  ),
               ],
               Positioned(
                 top: 150,
@@ -147,7 +170,8 @@ class _UserInputsState extends State<UserInputs> {
                       child: Text(
                         questions[index],
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: ColorPallete.color3, fontSize: 20),
+                        style:
+                            TextStyle(color: ColorPallete.color3, fontSize: 20),
                       ),
                     ),
                     const SizedBox(height: 50),
@@ -156,14 +180,22 @@ class _UserInputsState extends State<UserInputs> {
                       child: TextFormField(
                         controller: _answerController,
                         decoration: InputDecoration(
-                          hintText: args == 'travel' ? '(In miles)' : args == 'food' ? '(In Grams)' : '(In Hrs)',
+                          hintText: args == 'travel'
+                              ? '(In miles)'
+                              : args == 'food'
+                                  ? '(In Grams)'
+                                  : args == 'waste'
+                                      ? '(In Grams)'
+                                      : '(In Hrs)',
                           hintStyle: TextStyle(color: ColorPallete.color4),
                           suffixIcon: IconButton(
-                            icon: Icon(Icons.trending_flat, color: ColorPallete.color3),
+                            icon: Icon(Icons.trending_flat,
+                                color: ColorPallete.color3),
                             onPressed: submitAnswer,
                           ),
                           alignLabelWithHint: true,
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 2),
                         ),
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.number,

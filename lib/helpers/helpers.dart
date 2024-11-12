@@ -1,40 +1,40 @@
 class CarbonFootPrint {
   // >> Emission unit = kg of CO2
 
-  // Common electric devices consumptions
+  // Common electric device consumption
+  static final double kwhUsedByFanPerHour = 0.065;  // Assumed average for India
+  static final double kwhUsedByTVPerHour = 0.03;    // For a 35-inch LED TV
+  static final double kwhUsedByFridgePerHour = 0.25;  // Average for a 250W fridge
 
-  // Assuming the average power usage of a ceiling fan per hour in India is ~75 watts
-  static final double kwhUsedByFanPerHour = 0.075;
+  // Electricity (kWh) - National average based on India's energy mix
+  static final double emissionPerUnitElectricity = 0.475;
 
-  // Average LED TV power usage, assuming a common 32-40 inch LED in India
-  static final double kwhUsedByTVPerHour = 0.06;
+  // Water (L)
+  static final double emissionPerUnitWater = 0.001;
 
-  // Average fridge consumption per hour (common Indian refrigerator ~250-300L size)
-  static final double kwhUsedByFridgePerHour = 0.15;
+  // Fuel (km) - India average
+  static final double emissionPerKmCar = 0.313;
+  static final double emissionPerKmBike = 0.0687;
+  static final double emissionPerKmBicycle = 0.016;
 
-  // Electricity (kWh) - National average based on India’s energy mix
-  static final double emissionPerUnitElectricity = 0.82;
+  // Food-related emissions (calories)
+  static final double emissionPerUnitCalorieOfMeat = 219.67;
+  static final double emissionPerUnitCalorieOfGrain = 15.34;
+  static final double emissionPerUnitCalorieOfDairy = 1.9;
+  static final double emissionPerUnitCalorieOfFruit = 1.55;
 
-  // Water (L) - Assumption based on water processing emissions in India
-  static final double emissionPerUnitWater = 0.0005;
-
-  // Fuel consumption (average for Indian vehicles per km)
-  static final double emissionPerKmCar = 0.204;  // For an average petrol car
-  static final double emissionPerKmBike = 0.049; // For a typical two-wheeler
-  static final double emissionPerKmBicycle = 0.0;  // Bicycles typically emit negligible CO2
-
-  // Food-related emissions based on typical Indian diet
-  static final double emissionPerUnitCalorieOfMeat = 100.0;  // Lower than global averages as meat intake is generally lower in India
-  static final double emissionPerUnitCalorieOfGrain = 10.0;
-  static final double emissionPerUnitCalorieOfDairy = 2.5;
-  static final double emissionPerUnitCalorieOfFruit = 1.0;
+  // Waste emissions (grams)
+  static final double emissionPerGramOrganicWaste = 0.001;
+  static final double emissionPerGramElectronicWaste = 0.04;
+  static final double emissionPerGramPlasticWaste = 0.03;
 
   // Average daily emissions in kg of CO2 for an individual in India
-  static final double avgEmissionDueToHouseHoldPerDay = 6.5;  // Typical emissions from electricity, gas, and water usage
-  static final double avgEmissionDueToFoodPerDay = 4.5;       // Typical emissions based on an average Indian diet
-  static final double avgEmissionDueToTravelPerDay = 3.0;     // Average emissions from daily travel within cities
+  static final double avgEmissionDueToHouseHoldPerDay = 10;
+  static final double avgEmissionDueToFoodPerDay = 10;
+  static final double avgEmissionDueToTravelPerDay = 10;
+  static final double avgEmissionDueToWastePerDay = 5;
 
-  // Get the daily carbon footprint of your household activities
+  // Household footprint calculation
   static double getDailyHouseHoldCarbonFootPrint(
     double hoursFanUsed,
     double hoursTVUsed,
@@ -52,7 +52,7 @@ class CarbonFootPrint {
     return (emissionDueToElectricity + emissionDueToWater);
   }
 
-  // Get the daily footprint of your travel related activities
+  // Travel footprint calculation
   static double getDailyTravelFootPrint(double distanceTravelledByBike,
       double distanceTravelledByCar, double distanceTravelledByBicycle) {
     return (emissionPerKmBike * distanceTravelledByBike +
@@ -60,7 +60,7 @@ class CarbonFootPrint {
             emissionPerKmBicycle * distanceTravelledByBicycle);
   }
 
-  // Get the daily footprint of your food-related activities
+  // Food footprint calculation
   static double getDailyFoodCarbonFootPrint(
     double meatCalorieIntake,
     double grainCalorieIntake,
@@ -73,7 +73,18 @@ class CarbonFootPrint {
             fruitCalorieIntake * emissionPerUnitCalorieOfFruit) / 1000;
   }
 
-  // Get total carbon footprint according to daily activities
+  // Waste footprint calculation
+  static double getDailyWasteCarbonFootPrint(
+    double organicWasteInGrams,
+    double electronicWasteInGrams,
+    double plasticWasteInGrams,
+  ) {
+    return (organicWasteInGrams * emissionPerGramOrganicWaste +
+            electronicWasteInGrams * emissionPerGramElectronicWaste +
+            plasticWasteInGrams * emissionPerGramPlasticWaste);
+  }
+
+  // Total carbon footprint calculation
   static double getTotalCarbonFootPrint(
     // Household
     double hoursFanUsed,
@@ -91,12 +102,19 @@ class CarbonFootPrint {
     double grainCalorieIntake,
     double dairyCalorieIntake,
     double fruitCalorieIntake,
+
+    // Waste
+    double organicWasteInGrams,
+    double electronicWasteInGrams,
+    double plasticWasteInGrams,
   ) {
     return (getDailyHouseHoldCarbonFootPrint(
             hoursFanUsed, hoursTVUsed, hoursFridgeUsed, litresOfWaterUsed) +
         getDailyTravelFootPrint(distanceTravelledByBike, distanceTravelledByCar,
             distanceTravelledByBicycle) +
         getDailyFoodCarbonFootPrint(meatCalorieIntake, grainCalorieIntake,
-            dairyCalorieIntake, fruitCalorieIntake));
+            dairyCalorieIntake, fruitCalorieIntake) +
+        getDailyWasteCarbonFootPrint(
+            organicWasteInGrams, electronicWasteInGrams, plasticWasteInGrams));
   }
 }

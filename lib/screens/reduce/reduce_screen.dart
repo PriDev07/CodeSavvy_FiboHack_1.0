@@ -7,7 +7,6 @@ class ReduceEmissionScreen extends StatelessWidget {
   static final routeName = "/reduce-carbon-footprint";
 
   List<Widget> getWidgetTree() {
-    // Explicitly define the data with specific types for each item
     List<Map<String, dynamic>> reduceCarbonFootPrintmsgs = [
       {
         'icon': Icons.hot_tub,

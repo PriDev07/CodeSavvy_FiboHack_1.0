@@ -99,7 +99,12 @@ class StartScreen extends StatelessWidget {
                 'food',
               ),
               SizedBox(
-                height: 16.0,
+                height: 8.0,
+              ),
+              CustomCard(
+                'Waste',
+                'assets/images/recycle_bin.png',
+                'waste',
               ),
             ],
           ),

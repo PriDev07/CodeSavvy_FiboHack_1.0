@@ -20,6 +20,11 @@ class Questions with ChangeNotifier {
     'What is the distance travelled by Car?',
     'What is the distance travelled by Bicycle?',
   ];
+  List<String> _wasteQuestions = [
+    'How much organic waste do you generate?',
+    'How much electronic waste do you generate?',
+    'How much non organic waste(like plastic) do you generate?',
+  ];
 
   List<String> get foodQuestions {
     return _foodQuestions;
@@ -31,5 +36,9 @@ class Questions with ChangeNotifier {
 
   List<String> get waterQuestions {
     return _waterQuestions;
+  }
+
+  List<String> get wasteQuestions {
+    return _wasteQuestions;
   }
 }

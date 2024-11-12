@@ -1,4 +1,4 @@
-package com.example.c1o2
+package com.codesavvy.carbofoottrack
 
 import io.flutter.embedding.android.FlutterActivity
 
