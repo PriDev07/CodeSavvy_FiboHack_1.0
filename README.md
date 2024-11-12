@@ -2,7 +2,7 @@
 
 A Flutter app created to track your carbon footprint, raising awareness and encouraging eco-friendly choices. Developed during a hackathon, this app provides users with personalized insights into their environmental impact.
 
-[![CarboFoot Track](https://custom-icon-badges.demolab.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download")](build/app/outputs/flutter-apk/app-release.apk)
+[![CarboFoot Track](https://custom-icon-badges.demolab.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download")](App/app-release.apk)
 
 
 ---
