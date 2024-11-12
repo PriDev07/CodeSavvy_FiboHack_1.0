@@ -16,7 +16,7 @@ A Flutter app created to track your carbon footprint, raising awareness and enco
 2. **Home Screen Overview**
    - Clean, intuitive layout with categories represented by custom icons.
    - Tap on each category to enter details and calculate emissions.
-   - ![Home Screen](assets/images/readme/home.jpg = 200x400)
+   - <img src="assets/images/readme/home.jpg" alt="Home Screen" width="250">
 
 3. **Interactive Result Screen**
    - Presents a summary of your footprint with detailed insights.
@@ -24,18 +24,19 @@ A Flutter app created to track your carbon footprint, raising awareness and enco
    - **Comparison Section**: Compare your footprint with regional averages.
    - **Reduce Emissions Card**: Personalized suggestions to lower your emissions.
    - **Social Sharing**: Share your results to inspire eco-friendly actions.
-   - ![Results Screen](assets/images/readme/result.jpg)
+   - <img src="assets/images/readme/result.jpg" alt="Results Screen" width="250">
 
 4. **Social Sharing**
    - Encourages users to share their results on social platforms, inspiring others to reduce emissions.
 
 ---
 ## App Preview
-- **Home**:![Home Screen](assets/images/readme/Home.jpg)
-- **Questions**:![Questions Screen](assets/images/readme/ques_screen.jpg)
-- **Reduce Screen**:![Reduce carbon emission instructions Screen](assets/images/readme/reduce.jpg)
-- **Result Screen**:![Results Screen](assets/images/readme/result.jpg)
-- **Result Screen**:![Results Screen](assets/images/readme/result1.jpg)
+
+- **Home**: <img src="assets/images/readme/home.jpg" alt="Home Screen" width="250">
+- **Questions**: <img src="assets/images/readme/ques_screen.jpg" alt="Questions Screen" width="250">
+- **Reduce Screen**: <img src="assets/images/readme/reduce.jpg" alt="Reduce carbon emission instructions Screen" width="250">
+- **Result Screen**: <img src="assets/images/readme/result.jpg" alt="Results Screen" width="250">
+- **Result Screen**: <img src="assets/images/readme/result1.jpg" alt="Results Screen" width="250">
 ---
 ## 🖼️ Screens and Features
 
